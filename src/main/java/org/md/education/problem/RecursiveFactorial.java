@@ -13,7 +13,7 @@ public class RecursiveFactorial {
 	 * Empty constructor, sets number to 0
 	 */
 	public RecursiveFactorial() {
-		number = 0;
+		number = null;
 	}
 
 	/**
