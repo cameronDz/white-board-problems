@@ -35,6 +35,13 @@ public class ClockDegreesTest {
 	}
 
 	@Test
+	public void calculateHourHandDegree_tooLargeMinute_returnNull() {
+		Integer expected = null;
+		Integer actual = new ClockDegrees(3, 150).calculateHourHandDegree();
+		assertEquals(expected, actual);
+	}
+
+	@Test
 	public void calculateHourHandDegree_nullMinute_returnNull() {
 		Integer expected = null;
 		Integer actual = new ClockDegrees(3, null).calculateHourHandDegree();
@@ -45,6 +52,13 @@ public class ClockDegreesTest {
 	public void calculateHourHandDegree_negativeHour_returnNull() {
 		Integer expected = null;
 		Integer actual = new ClockDegrees(-3, 50).calculateHourHandDegree();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void calculateHourHandDegree_tooLargeHour_returnNull() {
+		Integer expected = null;
+		Integer actual = new ClockDegrees(33, 50).calculateHourHandDegree();
 		assertEquals(expected, actual);
 	}
 
