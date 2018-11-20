@@ -85,6 +85,7 @@ public class NumberWaysSteps {
 		if (stair != null && stair >= 0) {
 			if (steps != null && steps.length != 0 && stepsHasAllValidValues()) {
 				// TODO figure out solution
+				ret = 1;
 			}
 		}
 		return ret;
