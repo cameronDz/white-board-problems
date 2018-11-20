@@ -17,8 +17,8 @@ public class NumberWaysSteps {
 	 * Empty constructor. Default values set to 0 stair and 0 in array.
 	 */
 	public NumberWaysSteps() {
-		stair = 0;
-		steps = new Integer[] { 0 };
+		stair = null;
+		steps = null;
 	}
 
 	/**
@@ -72,12 +72,39 @@ public class NumberWaysSteps {
 		this.steps = steps;
 	}
 
+	/**
+	 * Determines the number of ways stairs can be walked up given that only can
+	 * take a step count from the steps array each time you move up the stairs.
+	 * 
+	 * @return Integer of the number of ways to move up the stairs. If stair is null
+	 *         or less than 0, or steps in null, or has null or values less than 1,
+	 *         will return null.
+	 */
 	public Integer calculateways() {
 		Integer ret = null;
-
-		// TODO figure out solution
-
+		if (stair != null && stair >= 0) {
+			if (steps != null && steps.length != 0 && stepsHasAllValidValues()) {
+				// TODO figure out solution
+			}
+		}
 		return ret;
+	}
+
+	/**
+	 * Assumes steps is not null and not empty. Checks that all values in steps
+	 * Integer[], making sure all values are greater than or equal to 1 and not
+	 * null.
+	 * 
+	 * @return Boolean false any value in steps Integer array is null or less than
+	 *         1. True otherwise.
+	 */
+	private Boolean stepsHasAllValidValues() {
+		for (Integer i : steps) {
+			if (i == null || i < 1) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	@Override
