@@ -1,6 +1,7 @@
 package org.md.education.problem;
 
 import java.util.Arrays;
+import java.util.HashMap;
 
 /**
  * Number of ways to climb steps given n steps, and the number of steps that can
@@ -12,6 +13,7 @@ public class NumberWaysSteps {
 
 	private Integer stair;
 	private Integer[] steps;
+	private HashMap<Integer, Integer> map;
 
 	/**
 	 * Empty constructor. Default values set to 0 stair and 0 in array.
@@ -80,14 +82,48 @@ public class NumberWaysSteps {
 	 *         or less than 0, or steps in null, or has null or values less than 1,
 	 *         will return null.
 	 */
-	public Integer calculateways() {
+	public Integer calculateWays() {
 		Integer ret = null;
 		if (stair != null && stair >= 0) {
 			if (steps != null && steps.length != 0 && stepsHasAllValidValues()) {
-				// TODO figure out solution
-				ret = 1;
+				// initialize and destroy hash map before running recursive algorithm
+				map = new HashMap<Integer, Integer>();
+				ret = recursivelyCalculateWays(stair);
+				map = null;
 			}
 		}
+		return ret;
+	}
+
+	/**
+	 * Assuming valid steps and stair count. Recursively figures our number of ways
+	 * to climb stairs when limited to steps array. Uses a hash map for storing
+	 * count once number of ways for value is computed.
+	 * 
+	 * @return Integer
+	 */
+	private Integer recursivelyCalculateWays(Integer recStair) {
+		if (map.containsKey(recStair)) {
+			// if calculation already stored in map, returns value immediately
+			return map.get(recStair);
+		}
+
+		Integer ret = 0;
+		// go through all Integer steps in array and calculate ways for each step value,
+		// and add all values together
+		for (Integer i : steps) {
+			if (i == recStair) {
+				// base case, step equal stair height
+				ret = ret + 1;
+			} else if (recStair - i > 0) {
+				// only recursively find ways if stair height is greater than 0 after taking i
+				// steps. any negative value will not add to total valid num way count
+				ret = ret + recursivelyCalculateWays(recStair - i);
+			}
+		}
+
+		// store computed value in hash map
+		map.put(recStair, ret);
 		return ret;
 	}
 
