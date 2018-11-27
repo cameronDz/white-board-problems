@@ -92,6 +92,13 @@ public class ValidateNumberWaysStepsTest {
 		Integer expected = 26;
 		Integer actual = numberWays.calculateWays();
 		assertEquals(expected, actual);
-
+	}
+	
+	@Test
+	public void recursivelyCalculateWays_validParams_return7() {
+		NumberWaysSteps numberWays = new NumberWaysSteps(9, new Integer[] { 2, 3, 5 });
+		Integer expected = 8;
+		Integer actual = numberWays.calculateWays();
+		assertEquals(expected, actual);
 	}
 }
