@@ -50,9 +50,11 @@ def determine_red_score(cutImg):
         for b in range(cutWidth):
             # get bgr values in tuple
             color = cutImg[a, b]
-            # if R is greater than combination of B and G, add to score
-            if(int(color[2]) > (int(color[0]) + int(color[1]))):
-                cutRedScore += 1
+            # if R is greater than combination of B and G, add to score and 
+            # above the minimum R threshold
+            if(int(color[2]) > 175):
+                if(int(color[2]) > (int(color[0]) + int(color[1]))):
+                    cutRedScore += 1
     return cutRedScore
 
 # set default red score and highest value name
