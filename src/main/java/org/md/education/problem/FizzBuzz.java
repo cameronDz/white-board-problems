@@ -5,8 +5,12 @@ package org.md.education.problem;
  * 'Fizz' instead of number. If number is divisible by 5, print 'Buzz' instead
  * of the number. If number is divisible by both 3 and 5, print 'FizzBuzz'.
  * Prints 10 numbers per line, with a tab between each number. Will return an
- * error message string if number integer is less than 1.
+ * error message string if number integer is less than 1. <br/>
  * 
+ * @version 3.7.2015 - Standard FizzBuzz program. Takes user input of a int,
+ *          counts to that int, changing any multiple of 3 to Fizz, 5 to Buzz,
+ *          multiples of 3 and 5 to FizzBuzz, and simply prints the int if
+ *          neither is the case.
  * @author Cameron
  */
 public class FizzBuzz {
